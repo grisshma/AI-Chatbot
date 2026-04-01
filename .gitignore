@@ -1,0 +1,23 @@
+# Environments
+.env
+.env.[a-zA-Z]*
+! .env.example
+
+# Dependencies
+node_modules/
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
