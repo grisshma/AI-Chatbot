@@ -5,6 +5,7 @@ const pool = require('./database/db');
 
 const authRoutes = require('./routes/authRoutes');
 const chatRoutes = require('./routes/chatRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
 
 const app = express();
 
@@ -25,6 +26,7 @@ pool.getConnection()
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/chat', chatRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 // Error Handling block
 app.use((err, req, res, next) => {

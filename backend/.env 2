@@ -5,4 +5,4 @@ DB_PASSWORD=12345678
 DB_NAME=ai_chatbot
 
 JWT_SECRET=super_secret_jwt_key_here
-GEMINI_API_KEY=your_api_key_here
+GEMINI_API_KEY=AIzaSyBLd9YV6WetZ4jile6Ydls4xvVfcn8_ASA

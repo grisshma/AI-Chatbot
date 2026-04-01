@@ -33,49 +33,52 @@ const Login = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-950 p-4 transition-colors duration-300">
-            <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-3xl shadow-2xl p-8 border border-gray-100 dark:border-gray-800">
-                <div className="flex flex-col items-center mb-8">
-                    <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg mb-4">
-                        <MessageSquare size={32} className="text-white" />
+        <div className="flex items-center justify-center min-h-screen relative p-4 transition-colors duration-300 bg-[#0f0c29]">
+            <div className="soulspire-bg"></div>
+            <div className="floating-particles"></div>
+            
+            <div className="w-full max-w-md glass-panel rounded-[40px] shadow-2xl p-10 border border-white/5 relative z-10">
+                <div className="flex flex-col items-center mb-10 text-center">
+                    <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-900/40 mb-6 transform -rotate-6 transition-transform hover:rotate-0">
+                        <img src="/logo.png" alt="SoulSpire Logo" className="w-12 h-12 object-contain" />
                     </div>
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Welcome Back</h1>
-                    <p className="text-gray-500 dark:text-gray-400 mt-2">Sign in to continue your conversations</p>
+                    <h2 className="text-4xl font-black text-white tracking-tighter uppercase italic neon-text-purple">SoulSpire</h2>
+                    <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.4em] mt-3">Initialize System Access</p>
                 </div>
 
                 {error && (
-                    <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30 rounded-2xl flex items-center space-x-3 text-red-600 dark:text-red-400">
+                    <div className="mb-6 p-4 bg-red-900/10 border border-red-500/20 rounded-2xl flex items-center space-x-3 text-red-500">
                         <AlertCircle size={20} className="shrink-0" />
-                        <p className="text-sm">{error}</p>
+                        <p className="text-xs font-bold uppercase tracking-tight">{error}</p>
                     </div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 ml-1">Email Address</label>
-                        <div className="relative">
-                            <Mail className="absolute left-4 top-3.5 text-gray-400" size={18} />
+                        <label className="block text-[10px] font-black uppercase tracking-widest text-gray-500 mb-2 ml-1">Terminal Address</label>
+                        <div className="relative group">
+                            <Mail className="absolute left-4 top-3.5 text-gray-600 group-focus-within:text-purple-500 transition-colors" size={18} />
                             <input
                                 type="email"
                                 required
                                 value={formData.email}
                                 onChange={(e) => setFormData({...formData, email: e.target.value})}
-                                className="w-full pl-12 pr-4 py-3.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all"
-                                placeholder="name@example.com"
+                                className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 focus:outline-none transition-all placeholder:text-gray-700 text-sm font-bold"
+                                placeholder="name@domain.com"
                             />
                         </div>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 ml-1">Password</label>
-                        <div className="relative">
-                            <Lock className="absolute left-4 top-3.5 text-gray-400" size={18} />
+                        <label className="block text-[10px] font-black uppercase tracking-widest text-gray-500 mb-2 ml-1">Access Protocol</label>
+                        <div className="relative group">
+                            <Lock className="absolute left-4 top-3.5 text-gray-600 group-focus-within:text-purple-500 transition-colors" size={18} />
                             <input
                                 type="password"
                                 required
                                 value={formData.password}
                                 onChange={(e) => setFormData({...formData, password: e.target.value})}
-                                className="w-full pl-12 pr-4 py-3.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all"
+                                className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 focus:outline-none transition-all placeholder:text-gray-700 text-sm font-bold"
                                 placeholder="••••••••"
                             />
                         </div>
@@ -84,15 +87,15 @@ const Login = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-xl shadow-blue-500/20 transition-all active:scale-[0.98] flex items-center justify-center space-x-2"
+                        className="w-full py-4 bg-purple-600 hover:bg-purple-500 text-black font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-purple-900/40 transition-all active:scale-[0.98] flex items-center justify-center space-x-2"
                     >
-                        {loading ? <Loader2 size={24} className="animate-spin" /> : <span>Sign In</span>}
+                        {loading ? <Loader2 size={24} className="animate-spin" /> : <span>Authorize</span>}
                     </button>
                 </form>
 
-                <p className="mt-8 text-center text-gray-600 dark:text-gray-400 text-sm">
-                    Don't have an account?{' '}
-                    <Link to="/signup" className="text-blue-600 hover:underline font-semibold">Sign up free</Link>
+                <p className="mt-10 text-center text-gray-500 text-[10px] font-black uppercase tracking-widest">
+                    New Initiate?{' '}
+                    <Link to="/signup" className="text-purple-500 hover:text-purple-400 font-black underline underline-offset-4 decoration-2">Create Profile</Link>
                 </p>
             </div>
         </div>

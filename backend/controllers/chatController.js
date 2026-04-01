@@ -10,8 +10,20 @@ exports.chat = async (req, res) => {
             return res.status(400).json({ error: 'Message is required.' });
         }
 
-        // 1. Get response from AI Service
-        const aiResponse = await aiService.generateAIResponse(message);
+        // 1. Get user context (Schedules, Habits, Tasks)
+        const [habits] = await pool.execute('SELECT name as title, streak FROM habits WHERE user_id = ?', [userId]);
+        const [schedules] = await pool.execute('SELECT title, description FROM schedules WHERE user_id = ? AND is_active = TRUE', [userId]);
+        const [tasks] = await pool.execute('SELECT title, status, category FROM tasks WHERE user_id = ?', [userId]);
+
+        const contextString = `
+            User Context:
+            Habits: ${JSON.stringify(habits)}
+            Active Schedules: ${JSON.stringify(schedules)}
+            Tasks: ${JSON.stringify(tasks)}
+        `;
+
+        // 2. Get response from AI Service with context
+        const aiResponse = await aiService.generateAIResponse(message, contextString);
 
         // 2. Save both to database
         const [result] = await pool.execute(

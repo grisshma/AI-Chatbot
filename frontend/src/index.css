@@ -1,50 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Space+Grotesk:wght@300;500;700&display=swap');
+
 @import "tailwindcss";
 
-@theme {
-  --color-brand-primary: #3b82f6;
-  --color-brand-secondary: #60a5fa;
-  --color-chat-bg-dark: #1f2937;
-  --color-chat-bg-light: #f3f4f6;
-}
-
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  background-color: #ffffff;
-  color: #1a1a1a;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --primary-purple: #9d50bb;
+  --secondary-pink: #ff00cc;
+  --neon-blue: #00d2ff;
+  --deep-black: #0f0c29;
+  --glass-bg: rgba(15, 12, 41, 0.7);
+  --neon-glow-purple: 0 0 15px rgba(157, 80, 187, 0.5);
+  --neon-glow-pink: 0 0 15px rgba(255, 0, 204, 0.5);
+  --neon-glow-blue: 0 0 15px rgba(0, 210, 255, 0.5);
 }
 
-body {
-  margin: 0;
-  display: flex;
-  min-width: 320px;
-  min-height: 100vh;
+@layer base {
+  body {
+    background-color: #0f0c29;
+    color: white;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Outfit', sans-serif;
+  }
 }
 
-.dark body {
-  background-color: #0f172a;
-  color: #f8fafc;
+@layer components {
+  .soulspire-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    overflow: hidden;
+  }
+
+  .soulspire-bg::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle at 50% 50%, rgba(157, 80, 187, 0.15) 0%, transparent 60%);
+    animation: pulse-bg 15s infinite alternate ease-in-out;
+  }
+
+  .floating-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(0, 210, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: move-particles 60s linear infinite;
+  }
+
+  .glass-panel {
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--glass-bg);
+  }
+
+  .neon-border-purple {
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    box-shadow: 0 0 10px rgba(157, 80, 187, 0.1);
+  }
+  .neon-border-purple:hover {
+    border-color: #a855f7;
+    box-shadow: 0 0 20px rgba(157, 80, 187, 0.3);
+  }
+
+  .neon-border-pink {
+    border: 1px solid rgba(236, 72, 153, 0.3);
+    box-shadow: 0 0 10px rgba(255, 0, 204, 0.1);
+  }
+  .neon-border-pink:hover {
+    border-color: #ec4899;
+    box-shadow: 0 0 20px rgba(255, 0, 204, 0.3);
+  }
+
+  .neon-text-purple {
+    text-shadow: 0 0 8px rgba(157, 80, 187, 0.8), 0 0 12px rgba(157, 80, 187, 0.5);
+  }
+
+  .neon-text-pink {
+    text-shadow: 0 0 8px rgba(255, 0, 204, 0.8), 0 0 12px rgba(255, 0, 204, 0.5);
+  }
+
+  .neon-text-blue {
+    text-shadow: 0 0 8px rgba(0, 210, 255, 0.8), 0 0 12px rgba(0, 210, 255, 0.5);
+  }
+
+  @keyframes pulse-bg {
+    0% { transform: scale(1) translate(-25%, -25%); }
+    100% { transform: scale(1.1) translate(0, 0); }
+  }
+
+  @keyframes move-particles {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 1000px; }
+  }
+
+  .hero-gradient {
+    background: linear-gradient(to right, var(--primary-purple), var(--secondary-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
-/* Custom scrollbar */
+/* Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #0f0c29;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #4b5563;
+  background: #302b63;
   border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #374151;
+  background: #9d50bb;
 }

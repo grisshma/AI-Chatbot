@@ -13,7 +13,7 @@ const Sidebar = ({ history, onNewChat, activeChatId }) => {
             <div className="p-4">
                 <button
                     onClick={onNewChat}
-                    className="flex items-center justify-center w-full px-4 py-3 space-x-2 text-sm font-medium text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition-colors shadow-lg"
+                    className="flex items-center justify-center w-full px-4 py-3 space-x-2 text-sm font-medium text-white bg-red-600 rounded-xl hover:bg-red-700 transition-colors shadow-lg shadow-red-900/20"
                 >
                     <PlusCircle size={18} />
                     <span>New Chat</span>
@@ -31,7 +31,7 @@ const Sidebar = ({ history, onNewChat, activeChatId }) => {
                             key={chat.id}
                             className={`flex items-center w-full px-3 py-3 space-x-3 text-sm text-left rounded-xl transition-all ${
                                 activeChatId === chat.id 
-                                ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' 
+                                ? 'bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400' 
                                 : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800'
                             }`}
                         >
@@ -53,7 +53,7 @@ const Sidebar = ({ history, onNewChat, activeChatId }) => {
                 </button>
 
                 <div className="flex items-center px-4 py-3 space-x-3 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                    <div className="flex-shrink-0 w-8 h-8 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center font-bold text-xs">
+                    <div className="flex-shrink-0 w-8 h-8 bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400 rounded-full flex items-center justify-center font-bold text-xs">
                         {user?.username?.charAt(0).toUpperCase()}
                     </div>
                     <div className="flex-1 min-w-0">
